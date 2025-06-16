@@ -1,0 +1,220 @@
+[gd_scene load_steps=15 format=3 uid="uid://bw5xjhmqhdmr"]
+
+[ext_resource type="Script" uid="uid://dmp0qgwufws7" path="res://scripts/UI.cs" id="1_x4jx1"]
+[ext_resource type="LabelSettings" uid="uid://djq0jf86g0evw" path="res://themes/label_72.tres" id="3_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://cbup25xaskevi" path="res://assets/sprites/UI/textGetReady.png" id="3_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://4u06umda2kkq" path="res://assets/sprites/UI/tapTick.png" id="4_wm3ai"]
+[ext_resource type="Texture2D" uid="uid://cp6d624nqai35" path="res://assets/sprites/UI/textGameOver.png" id="6_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://de1wt6t5tvkt2" path="res://assets/sprites/UI/UIbg.png" id="7_6rmj2"]
+[ext_resource type="LabelSettings" uid="uid://cibdaup6ciio3" path="res://themes/label_35_yellow.tres" id="7_cgfq5"]
+[ext_resource type="FontFile" uid="uid://ch838qdqn2dk2" path="res://assets/fonts/font_score.ttf" id="8_vsj0x"]
+[ext_resource type="Texture2D" uid="uid://cv8k6wgjscng5" path="res://assets/sprites/UI/medalBronze.png" id="9_qsv74"]
+[ext_resource type="Texture2D" uid="uid://8raegiad1xic" path="res://assets/sprites/UI/buttonLarge.png" id="10_h1mc3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dvkv"]
+font = ExtResource("8_vsj0x")
+font_size = 55
+outline_size = 16
+outline_color = Color(0.511581, 0.17189, 0.0636197, 1)
+
+[sub_resource type="Animation" id="Animation_p7vwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/TextureRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8dubc"]
+resource_name = "menu"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/TextureRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktti3"]
+_data = {
+&"RESET": SubResource("Animation_p7vwb"),
+&"menu": SubResource("Animation_8dubc")
+}
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_x4jx1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "0"
+label_settings = ExtResource("3_7dvkv")
+
+[node name="StartMenu" type="Control" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/StartMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 73.0
+grow_horizontal = 2
+texture = ExtResource("3_gdt2y")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wm3ai")
+
+[node name="GameOverMenu" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(450, 250)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GameOverMenu"]
+layout_mode = 2
+texture = ExtResource("6_vdcm2")
+
+[node name="BackGround" type="TextureRect" parent="MarginContainer/GameOverMenu"]
+layout_mode = 2
+texture = ExtResource("7_6rmj2")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GameOverMenu/BackGround"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MEDAL"
+label_settings = ExtResource("7_cgfq5")
+horizontal_alignment = 1
+
+[node name="MedalImg" type="TextureRect" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("9_qsv74")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "SCORE"
+label_settings = ExtResource("7_cgfq5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentScore" type="Label" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_7dvkv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "BEST"
+label_settings = ExtResource("7_cgfq5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScore" type="Label" parent="MarginContainer/GameOverMenu/BackGround/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_7dvkv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OKButton" type="TextureButton" parent="MarginContainer/GameOverMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("10_h1mc3")
+
+[node name="Label" type="Label" parent="MarginContainer/GameOverMenu/OKButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OK"
+label_settings = SubResource("LabelSettings_7dvkv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ktti3")
+}
+autoplay = "menu"

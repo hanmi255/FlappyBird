@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpymqynnwrtb0"]
+
+[ext_resource type="Script" uid="uid://c3ak1hujqvexa" path="res://scripts/Main.cs" id="1_sugp2"]
+[ext_resource type="Texture2D" uid="uid://ks8r5xy6kntl" path="res://assets/sprites/background.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dn7ri5h1uu4ta" path="res://scenes/player.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cfexbwor312n5" path="res://scenes/spawner.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cibfpkppf6xsw" path="res://scenes/ground.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bw5xjhmqhdmr" path="res://scenes/ui.tscn" id="6_tefeu"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_sugp2")
+
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(1, -110)
+scale = Vector2(2, 2)
+texture = ExtResource("2_jyhfs")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("3_tbgi4")]
+position = Vector2(193, 241)
+
+[node name="Spawner" parent="." instance=ExtResource("4_jyhfs")]
+
+[node name="Ground" parent="." instance=ExtResource("5_tbgi4")]
+position = Vector2(-4, 820)
+
+[node name="UI" parent="." instance=ExtResource("6_tefeu")]

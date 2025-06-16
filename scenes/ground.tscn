@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cibfpkppf6xsw"]
+
+[ext_resource type="Script" uid="uid://njh7rp4ai67j" path="res://scripts/Ground.cs" id="1_mi8v4"]
+[ext_resource type="Texture2D" uid="uid://cfk8cpve022ns" path="res://assets/sprites/groundSnow.png" id="1_pybca"]
+[ext_resource type="AudioStream" uid="uid://tq8wl3tah2tf" path="res://assets/audio/sfx_die.wav" id="3_lmksl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi8v4"]
+size = Vector2(809, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmksl"]
+size = Vector2(809, 71)
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_mi8v4")
+
+[node name="Ground_1" type="Area2D" parent="."]
+position = Vector2(404, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground_1"]
+unique_name_in_owner = true
+texture = ExtResource("1_pybca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_1"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_mi8v4")
+
+[node name="Ground_2" type="Area2D" parent="."]
+position = Vector2(1212, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground_2"]
+texture = ExtResource("1_pybca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground_2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lmksl")
+debug_color = Color(0.753159, 0.0126381, 0.357353, 0.42)
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lmksl")
+bus = &"sfx"

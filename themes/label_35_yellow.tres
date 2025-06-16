@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cibdaup6ciio3"]
+
+[ext_resource type="FontFile" uid="uid://ch838qdqn2dk2" path="res://assets/fonts/font_score.ttf" id="1_gqvqa"]
+
+[resource]
+font = ExtResource("1_gqvqa")
+font_size = 35
+font_color = Color(0.960784, 0.698039, 0.164706, 1)
+outline_size = 16
+outline_color = Color(0.329383, 0.306603, 0.0672159, 1)
