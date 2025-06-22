@@ -11,7 +11,6 @@ public partial class Spawner : Node2D
     [Signal] public delegate void OnObstacleCrashEventHandler();
     [Signal] public delegate void OnScoreAreaEnteredEventHandler();
 
-
     public override void _Ready()
     {
         timer = GetNode<Timer>("Timer");
